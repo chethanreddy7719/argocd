@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 680" font-family="Segoe UI, Roboto, Arial, sans-serif">
+
+  <!-- White Background -->
+  <rect width="1400" height="680" fill="#ffffff"/>
+
+  <!-- ===================== DEVELOPER ===================== -->
+  <rect x="30" y="128" width="76" height="54" rx="6" fill="none" stroke="#334155" stroke-width="3"/>
+  <line x1="40" y1="138" x2="70" y2="138" stroke="#60a5fa" stroke-width="3"/>
+  <line x1="40" y1="147" x2="96" y2="147" stroke="#cbd5e1" stroke-width="3"/>
+  <line x1="40" y1="156" x2="86" y2="156" stroke="#cbd5e1" stroke-width="3"/>
+  <line x1="40" y1="165" x2="62" y2="165" stroke="#60a5fa" stroke-width="3"/>
+  <path d="M18 182 L118 182 L112 193 L24 193 Z" fill="none" stroke="#334155" stroke-width="3"/>
+  <circle cx="68" cy="98" r="20" fill="none" stroke="#334155" stroke-width="3"/>
+  <path d="M38 126 Q38 108 68 112 Q98 108 98 126" fill="none" stroke="#334155" stroke-width="3"/>
+  <text x="68" y="222" text-anchor="middle" fill="#1e293b" font-size="18" font-weight="700">Developer</text>
+  <text x="68" y="244" text-anchor="middle" fill="#64748b" font-size="14">git push</text>
+
+  <!-- Arrow: Dev -> Git -->
+  <line x1="124" y1="155" x2="178" y2="155" stroke="#334155" stroke-width="3" stroke-dasharray="10,6"/>
+  <polygon points="183,155 171,147 171,163" fill="#334155"/>
+
+  <!-- ===================== GIT SOURCE REPO ===================== -->
+  <rect x="198" y="116" width="60" height="60" rx="8" fill="#F05032" transform="rotate(45,228,146)"/>
+  <circle cx="218" cy="138" r="6" fill="#ffffff"/>
+  <circle cx="240" cy="138" r="6" fill="#ffffff"/>
+  <circle cx="229" cy="158" r="6" fill="#ffffff"/>
+  <line x1="218" y1="144" x2="229" y2="153" stroke="#ffffff" stroke-width="3"/>
+  <line x1="240" y1="144" x2="229" y2="153" stroke="#ffffff" stroke-width="3"/>
+  <text x="229" y="202" text-anchor="middle" fill="#1e293b" font-size="18" font-weight="700">Source Repo</text>
+  <text x="229" y="224" text-anchor="middle" fill="#64748b" font-size="14">GitHub</text>
+
+  <!-- Arrow: Git -> Jenkins -->
+  <text x="306" y="136" text-anchor="middle" fill="#64748b" font-size="14" font-style="italic">webhook</text>
+  <line x1="272" y1="150" x2="346" y2="150" stroke="#334155" stroke-width="3" stroke-dasharray="10,6"/>
+  <polygon points="351,150 339,142 339,158" fill="#334155"/>
+
+  <!-- ===================== JENKINS PIPELINE (Large Box) ===================== -->
+  <rect x="358" y="20" width="690" height="400" rx="16" fill="#ffffff" stroke="#475569" stroke-width="3"/>
+
+  <!-- Jenkins butler -->
+  <circle cx="404" cy="62" r="26" fill="#f8fafc" stroke="#D24939" stroke-width="3"/>
+  <rect x="382" y="30" width="44" height="7" rx="3" fill="#1e293b"/>
+  <path d="M386 37 L422 37 L419 30 L389 30 Z" fill="#1e293b"/>
+  <circle cx="395" cy="56" r="3.5" fill="#334155"/>
+  <circle cx="413" cy="56" r="3.5" fill="#334155"/>
+  <path d="M392 67 Q404 75 416 67" fill="none" stroke="#334155" stroke-width="2"/>
+  <rect x="424" y="58" width="14" height="18" rx="3" fill="#D24939"/>
+  <path d="M438 62 Q447 62 447 67 Q447 72 438 72" fill="none" stroke="#D24939" stroke-width="2.5"/>
+  <text x="460" y="60" fill="#1e293b" font-size="24" font-weight="700">Jenkins Pipeline</text>
+  <text x="460" y="84" fill="#64748b" font-size="16">Declarative · Gated · kubectl Deploy</text>
+
+  <!-- ============ ROW 1: Stages 1-3 (Big boxes) ============ -->
+
+  <!-- Stage 1: Checkout -->
+  <rect x="380" y="106" width="200" height="120" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2.5"/>
+  <text x="480" y="132" text-anchor="middle" fill="#ea580c" font-size="15" font-weight="700">STAGE 1</text>
+  <text x="480" y="162" text-anchor="middle" fill="#1e293b" font-size="22" font-weight="700">Checkout</text>
+  <text x="480" y="188" text-anchor="middle" fill="#64748b" font-size="14">Git SCM · main branch</text>
+  <text x="480" y="208" text-anchor="middle" fill="#64748b" font-size="14">GitHub webhook trigger</text>
+
+  <line x1="582" y1="166" x2="608" y2="166" stroke="#94a3b8" stroke-width="3"/>
+  <polygon points="613,166 603,158 603,174" fill="#94a3b8"/>
+
+  <!-- Stage 2: SonarQube -->
+  <rect x="618" y="106" width="200" height="120" rx="12" fill="#eff6ff" stroke="#3b82c4" stroke-width="2.5"/>
+  <text x="718" y="132" text-anchor="middle" fill="#3b82c4" font-size="15" font-weight="700">STAGE 2</text>
+  <text x="718" y="162" text-anchor="middle" fill="#1e293b" font-size="22" font-weight="700">SonarQube</text>
+  <text x="718" y="188" text-anchor="middle" fill="#64748b" font-size="14">SAST · Quality Gate</text>
+  <text x="718" y="208" text-anchor="middle" fill="#64748b" font-size="14">Bugs · Smells · Hotspots</text>
+
+  <line x1="820" y1="166" x2="846" y2="166" stroke="#94a3b8" stroke-width="3"/>
+  <polygon points="851,166 841,158 841,174" fill="#94a3b8"/>
+
+  <!-- Stage 3: Docker Build -->
+  <rect x="856" y="106" width="180" height="120" rx="12" fill="#eff6ff" stroke="#2496ED" stroke-width="2.5"/>
+  <text x="946" y="132" text-anchor="middle" fill="#2496ED" font-size="15" font-weight="700">STAGE 3</text>
+  <text x="946" y="162" text-anchor="middle" fill="#1e293b" font-size="22" font-weight="700">Docker Build</text>
+  <text x="946" y="188" text-anchor="middle" fill="#64748b" font-size="14">--no-cache · Dockerfile</text>
+  <text x="946" y="208" text-anchor="middle" fill="#64748b" font-size="14">Tag: BUILD_NUMBER</text>
+
+  <!-- Gate badges row 1 -->
+  <rect x="640" y="230" width="68" height="22" rx="6" fill="#fbbf24"/>
+  <text x="674" y="246" text-anchor="middle" fill="#1e293b" font-size="13" font-weight="700">GATE</text>
+
+  <!-- Arrow: Row 1 → Row 2 -->
+  <line x1="946" y1="228" x2="946" y2="244" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="946" y1="244" x2="582" y2="244" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="582" y1="244" x2="582" y2="260" stroke="#94a3b8" stroke-width="3"/>
+  <polygon points="582,265 574,255 590,255" fill="#94a3b8"/>
+
+  <!-- ============ ROW 2: Stages 4-6 (Big boxes) ============ -->
+
+  <!-- Stage 4: Trivy Scan -->
+  <rect x="380" y="268" width="200" height="120" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2.5"/>
+  <text x="480" y="294" text-anchor="middle" fill="#dc2626" font-size="15" font-weight="700">STAGE 4</text>
+  <text x="480" y="324" text-anchor="middle" fill="#1e293b" font-size="22" font-weight="700">Trivy Scan</text>
+  <text x="480" y="350" text-anchor="middle" fill="#64748b" font-size="14">Pass 1: LOW-HIGH → log only</text>
+  <text x="480" y="372" text-anchor="middle" fill="#dc2626" font-size="14" font-weight="600">Pass 2: CRITICAL → fail build</text>
+
+  <line x1="582" y1="328" x2="608" y2="328" stroke="#94a3b8" stroke-width="3"/>
+  <polygon points="613,328 603,320 603,336" fill="#94a3b8"/>
+
+  <!-- Stage 5: Push Image -->
+  <rect x="618" y="268" width="200" height="120" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="718" y="294" text-anchor="middle" fill="#16a34a" font-size="15" font-weight="700">STAGE 5</text>
+  <text x="718" y="324" text-anchor="middle" fill="#1e293b" font-size="22" font-weight="700">Push Image</text>
+  <text x="718" y="350" text-anchor="middle" fill="#64748b" font-size="14">Docker Hub registry</text>
+  <text x="718" y="372" text-anchor="middle" fill="#64748b" font-size="14">:BUILD_NUMBER + :latest</text>
+
+  <line x1="820" y1="328" x2="846" y2="328" stroke="#94a3b8" stroke-width="3"/>
+  <polygon points="851,328 841,320 841,336" fill="#94a3b8"/>
+
+  <!-- Stage 6: kubectl Deploy -->
+  <rect x="856" y="268" width="180" height="120" rx="12" fill="#faf5ff" stroke="#7c3aed" stroke-width="2.5"/>
+  <text x="946" y="294" text-anchor="middle" fill="#7c3aed" font-size="15" font-weight="700">STAGE 6</text>
+  <text x="946" y="324" text-anchor="middle" fill="#1e293b" font-size="22" font-weight="700">kubectl</text>
+  <text x="946" y="350" text-anchor="middle" fill="#64748b" font-size="14">set image → rolling update</text>
+  <text x="946" y="372" text-anchor="middle" fill="#64748b" font-size="14">rollout status · 300s timeout</text>
+
+  <!-- Gate badges row 2 -->
+  <rect x="398" y="392" width="68" height="22" rx="6" fill="#ef4444"/>
+  <text x="432" y="408" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">GATE</text>
+
+  <rect x="868" y="392" width="68" height="22" rx="6" fill="#7c3aed"/>
+  <text x="902" y="408" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">DEPLOY</text>
+
+  <!-- Arrow: Jenkins -> K8S -->
+  <line x1="1050" y1="220" x2="1090" y2="220" stroke="#334155" stroke-width="3" stroke-dasharray="10,6"/>
+  <polygon points="1095,220 1083,212 1083,228" fill="#334155"/>
+
+  <!-- ===================== K8S CLUSTER ===================== -->
+  <rect x="1102" y="30" width="270" height="390" rx="16" fill="#ffffff" stroke="#326CE5" stroke-width="3"/>
+
+  <!-- Kubernetes wheel -->
+  <circle cx="1160" cy="100" r="40" fill="none" stroke="#326CE5" stroke-width="4"/>
+  <circle cx="1160" cy="100" r="14" fill="#326CE5"/>
+  <line x1="1160" y1="56" x2="1160" y2="70" stroke="#326CE5" stroke-width="4"/>
+  <line x1="1160" y1="130" x2="1160" y2="144" stroke="#326CE5" stroke-width="4"/>
+  <line x1="1116" y1="100" x2="1130" y2="100" stroke="#326CE5" stroke-width="4"/>
+  <line x1="1190" y1="100" x2="1204" y2="100" stroke="#326CE5" stroke-width="4"/>
+  <line x1="1132" y1="72" x2="1142" y2="82" stroke="#326CE5" stroke-width="4"/>
+  <line x1="1178" y1="118" x2="1188" y2="128" stroke="#326CE5" stroke-width="4"/>
+  <line x1="1132" y1="128" x2="1142" y2="118" stroke="#326CE5" stroke-width="4"/>
+  <line x1="1178" y1="82" x2="1188" y2="72" stroke="#326CE5" stroke-width="4"/>
+
+  <text x="1280" y="80" text-anchor="middle" fill="#1e293b" font-size="22" font-weight="700">K8s</text>
+  <text x="1280" y="106" text-anchor="middle" fill="#1e293b" font-size="22" font-weight="700">Cluster</text>
+  <text x="1280" y="132" text-anchor="middle" fill="#64748b" font-size="15">backend namespace</text>
+
+  <!-- Deployment box -->
+  <rect x="1120" y="164" width="236" height="60" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
+  <text x="1238" y="190" text-anchor="middle" fill="#326CE5" font-size="17" font-weight="700">Deployment</text>
+  <text x="1238" y="212" text-anchor="middle" fill="#64748b" font-size="14">backend-deployment · 2 replicas</text>
+
+  <!-- Service box -->
+  <rect x="1120" y="236" width="236" height="60" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
+  <text x="1238" y="262" text-anchor="middle" fill="#16a34a" font-size="17" font-weight="700">Service</text>
+  <text x="1238" y="284" text-anchor="middle" fill="#64748b" font-size="14">backend-service :3000</text>
+
+  <!-- Ingress box -->
+  <rect x="1120" y="308" width="236" height="60" rx="10" fill="#fff7ed" stroke="#f59e0b" stroke-width="2"/>
+  <text x="1238" y="334" text-anchor="middle" fill="#d97706" font-size="17" font-weight="700">Ingress</text>
+  <text x="1238" y="356" text-anchor="middle" fill="#64748b" font-size="14">backend.acadcart.com</text>
+
+  <!-- Probes info -->
+  <text x="1238" y="400" text-anchor="middle" fill="#94a3b8" font-size="13">Liveness + Readiness probes on /healthz</text>
+
+  <!-- ===================== BOTTOM ROW: Detail Cards ===================== -->
+
+  <!-- Docker Hub Card -->
+  <rect x="30" y="450" width="310" height="200" rx="16" fill="#ffffff" stroke="#2496ED" stroke-width="2.5"/>
+  <rect x="52" y="472" width="80" height="56" rx="6" fill="#2496ED"/>
+  <rect x="58" y="478" width="18" height="14" rx="3" fill="#60a5fa" stroke="#ffffff" stroke-width="1.5"/>
+  <rect x="80" y="478" width="18" height="14" rx="3" fill="#60a5fa" stroke="#ffffff" stroke-width="1.5"/>
+  <rect x="102" y="478" width="18" height="14" rx="3" fill="#60a5fa" stroke="#ffffff" stroke-width="1.5"/>
+  <rect x="58" y="498" width="18" height="14" rx="3" fill="#93c5fd" stroke="#ffffff" stroke-width="1.5"/>
+  <rect x="80" y="498" width="18" height="14" rx="3" fill="#93c5fd" stroke="#ffffff" stroke-width="1.5"/>
+  <rect x="102" y="498" width="18" height="14" rx="3" fill="#93c5fd" stroke="#ffffff" stroke-width="1.5"/>
+  <text x="152" y="488" fill="#1e293b" font-size="20" font-weight="700">Docker Hub</text>
+  <text x="152" y="514" fill="#64748b" font-size="15">Container Registry</text>
+  <rect x="52" y="540" width="268" height="56" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="72" y="564" fill="#16a34a" font-size="17" font-weight="700">+</text>
+  <text x="94" y="564" fill="#1e293b" font-size="16" font-family="monospace">harshajain/backend:42</text>
+  <text x="72" y="586" fill="#16a34a" font-size="17" font-weight="700">+</text>
+  <text x="94" y="586" fill="#1e293b" font-size="16" font-family="monospace">harshajain/backend:latest</text>
+  <text x="52" y="632" fill="#94a3b8" font-size="13">Immutable tag for K8s · latest for dev</text>
+
+  <!-- kubectl Deploy Card -->
+  <rect x="370" y="450" width="310" height="200" rx="16" fill="#ffffff" stroke="#c4b5fd" stroke-width="2.5"/>
+  <circle cx="430" cy="510" r="36" fill="none" stroke="#7c3aed" stroke-width="4"/>
+  <text x="430" y="520" text-anchor="middle" fill="#7c3aed" font-size="26" font-weight="700">$</text>
+  <text x="486" y="488" fill="#7c3aed" font-size="20" font-weight="700">kubectl Deploy</text>
+  <text x="486" y="516" fill="#334155" font-size="16">set image → rolling update</text>
+  <text x="486" y="544" fill="#334155" font-size="16">rollout status → verify health</text>
+  <text x="486" y="572" fill="#334155" font-size="16">kubeconfig credential file</text>
+  <text x="486" y="598" fill="#94a3b8" font-size="14">300s timeout · zero-downtime deploy</text>
+  <text x="486" y="620" fill="#94a3b8" font-size="13">Auto-rollback if probes fail</text>
+
+  <!-- Trivy Card -->
+  <rect x="710" y="450" width="310" height="200" rx="16" fill="#ffffff" stroke="#fca5a5" stroke-width="2.5"/>
+  <path d="M748 478 L748 520 Q748 544 778 558 Q808 544 808 520 L808 478 Q778 466 748 478 Z" fill="none" stroke="#dc2626" stroke-width="4"/>
+  <path d="M766 512 L776 526 L796 494" fill="none" stroke="#dc2626" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="828" y="488" fill="#dc2626" font-size="20" font-weight="700">Trivy Scan</text>
+  <text x="828" y="516" fill="#334155" font-size="16">Two-pass CVE scanning</text>
+  <text x="828" y="544" fill="#334155" font-size="16">LOW-HIGH → log only</text>
+  <text x="828" y="572" fill="#dc2626" font-size="16" font-weight="600">CRITICAL → fail build</text>
+  <text x="828" y="598" fill="#94a3b8" font-size="14">OS pkgs · npm deps</text>
+  <text x="828" y="620" fill="#94a3b8" font-size="13">NVD + GitHub Advisory DB</text>
+
+  <!-- SonarQube Card -->
+  <rect x="1050" y="450" width="310" height="200" rx="16" fill="#ffffff" stroke="#93c5fd" stroke-width="2.5"/>
+  <circle cx="1108" cy="510" r="32" fill="none" stroke="#3b82c4" stroke-width="3"/>
+  <circle cx="1108" cy="510" r="18" fill="none" stroke="#3b82c4" stroke-width="2.5"/>
+  <circle cx="1108" cy="510" r="6" fill="#3b82c4"/>
+  <line x1="1108" y1="510" x2="1136" y2="486" stroke="#3b82c4" stroke-width="3"/>
+  <text x="1158" y="488" fill="#3b82c4" font-size="20" font-weight="700">SonarQube</text>
+  <text x="1158" y="516" fill="#334155" font-size="16">SAST · Static Analysis</text>
+  <text x="1158" y="544" fill="#334155" font-size="16">Bugs · Code Smells</text>
+  <text x="1158" y="572" fill="#334155" font-size="16">Security Hotspots</text>
+  <text x="1158" y="598" fill="#94a3b8" font-size="14">Quality gate pass/fail</text>
+  <text x="1158" y="620" fill="#94a3b8" font-size="13">Coverage thresholds enforced</text>
+
+</svg>

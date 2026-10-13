@@ -1,0 +1,21 @@
+# 2️⃣ ArgoCD Application pointing to Git repo Helm chart
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster_healthz
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/jaintpharsha/mern_3tire.git  
+    targetRevision: main  
+    path: k8s/cluster_healtz/manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

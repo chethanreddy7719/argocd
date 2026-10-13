@@ -1,0 +1,84 @@
+pipeline {
+    agent any
+
+    environment {
+        TF_DIR = "./terraform"
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+        timeout(time: 60, unit: 'MINUTES')
+        timestamps()
+        disableConcurrentBuilds()
+        ansiColor('xterm')
+    }
+
+    stages {
+        stage('CHECKOUT') {
+            steps {
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        credentialsId: 'github',
+                        url: 'https://github.com/jaintpharsha/mern_3tire.git'
+                    ]]
+                ])
+            }
+        }
+
+        stage('TERRAFORM INIT') {
+            steps {
+                dir("${TF_DIR}") {
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials']]) {
+                        sh "terraform init -input=false"
+                    }
+                }
+            }
+        }
+
+        stage('TERRAFORM VALIDATE') {
+            steps {
+                dir("${TF_DIR}") {
+                    sh "terraform validate"
+                    sh "terraform fmt -check -recursive"
+                }
+            }
+        }
+
+        stage('TERRAFORM PLAN') {
+            steps {
+                dir("${TF_DIR}") {
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials']]) {
+                        sh "terraform plan -out=tfplan -input=false"
+                    }
+                }
+            }
+        }
+
+        stage('APPROVAL') {
+            steps {
+                input message: 'Review the Terraform plan above. Approve to apply?', ok: 'Apply'
+            }
+        }
+
+        stage('TERRAFORM APPLY') {
+            steps {
+                dir("${TF_DIR}") {
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials']]) {
+                        sh "terraform apply -auto-approve tfplan"
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            dir("${TF_DIR}") {
+                sh "rm -f tfplan"
+            }
+            cleanWs()
+        }
+    }
+}

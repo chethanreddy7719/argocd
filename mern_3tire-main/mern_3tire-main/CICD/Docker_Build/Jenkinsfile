@@ -1,0 +1,91 @@
+pipeline {
+    agent any
+
+    environment {
+        BACKEND_IMAGE  = "harshajain/backend"
+        DOCKERFILE     = "./Dockerfile"
+        SONAR_HOST_URL = "http://65.0.129.172:9000"
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+        timeout(time: 30, unit: 'MINUTES')
+        timestamps()
+        disableConcurrentBuilds()
+    }
+
+    stages {
+        stage('CHECKOUT') {
+            steps {
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        credentialsId: 'github',
+                        url: 'https://github.com/jaintpharsha/mern_3tire.git'
+                    ]]
+                ])
+            }
+        }
+
+        stage('SONARQUBE ANALYSIS') {
+            steps {
+                dir('./backend') {
+                    withCredentials([string(credentialsId: 'backend', variable: 'SONAR_TOKEN')]) {
+                        sh "sonar-scanner -Dsonar.host.url=${SONAR_HOST_URL}"
+                    }
+                }
+            }
+        }
+
+        stage('DOCKER BUILD') {
+            steps {
+                script {
+                    dir('./backend') {
+                        backendImage = docker.build(
+                            "${BACKEND_IMAGE}:${env.BUILD_NUMBER}",
+                            "--no-cache -f ${DOCKERFILE} ."
+                        )
+                    }
+                }
+            }
+        }
+
+        stage('TRIVY SCAN') {
+            steps {
+                sh """
+                    trivy image \\
+                        --severity LOW,MEDIUM,HIGH \\
+                        --exit-code 0 \\
+                        --format table \\
+                        ${BACKEND_IMAGE}:${env.BUILD_NUMBER}
+                """
+                sh """
+                    trivy image \\
+                        --severity CRITICAL \\
+                        --exit-code 1 \\
+                        --format table \\
+                        ${BACKEND_IMAGE}:${env.BUILD_NUMBER}
+                """
+            }
+        }
+
+        stage('PUSH IMAGE') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub') {
+                        backendImage.push("${env.BUILD_NUMBER}")
+                        backendImage.push('latest')
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            sh "docker rmi ${BACKEND_IMAGE}:${env.BUILD_NUMBER} || true"
+            cleanWs()
+        }
+    }
+}
